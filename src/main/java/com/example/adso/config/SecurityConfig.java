@@ -44,9 +44,14 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("https://git-front-4w73.onrender.com", "http://localhost:4200"));
+
+        // LO CORREGIDO
+        config.setAllowedOriginPatterns(List.of(
+                "https://git-front-4w73.onrender.com",
+                "http://localhost:4200"
+        ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedHeaders(List.of("*", "Content-Type", "Authorization"));
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
